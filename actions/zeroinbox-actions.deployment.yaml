@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zeroinbox-actions
+  # namespace: zeroinbox-api-dev
+  labels:
+    app: zeroinbox-actions
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zeroinbox-actions
+  template:
+    metadata:
+      labels:
+        app: zeroinbox-actions
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: zeroinbox-message-ids
+          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-actions@sha256:fadaaa35b42244e464886467fd655fcd8c068712d69267a0556c88e5bf3b2a88"
+          imagePullPolicy: IfNotPresent
+          # resources:
+          #   requests:
+          #     memory: "500Mi"
+          #     cpu: "300m"
+          # livenessProbe:
+          #   httpGet:
+          #     path: /healthz
+          #     port: 9112
+          #     httpHeaders:
+          #     - name: health-check
+          #       value: "true"
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 5
+          envFrom:
+          - configMapRef:
+              name: "zeroinbox-actions-config"
+          env:
+          - name: MONGO_URI
+            valueFrom:
+              secretKeyRef:
+                name: "zeroinbox-secrets"
+                key: "MONGO_URI"
+          - name: RABBIT_URL
+            valueFrom:
+              secretKeyRef:
+                name: "zeroinbox-secrets"
+                key: "RABBIT_URL"

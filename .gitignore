@@ -1,0 +1,4 @@
+.env
+.secrets.env
+/secrets
+/docker-compose/*.env

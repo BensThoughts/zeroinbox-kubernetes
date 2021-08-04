@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+
+  zeroinbox-api-gateway:
+    container_name: zeroinbox-api-gateway
+    image: gcr.io/zeroinbox-portfolio-project/zeroinbox-api-gateway:latest
+    env_file:
+      - .env
+    command: npm run start:nodemon
+    ports:
+      - 8080:8080
+    volumes:
+      - type: bind
+        source: /home/bensthoughts/Programming/ZeroInbox/backend/zeroinbox-api-gateway/src
+        target: /usr/src/app/src
+    networks:
+      - backend
+
+  zeroinbox-message-ids-controller:
+    container_name: zeroinbox-message-ids-controller
+    image: gcr.io/zeroinbox-portfolio-project/zeroinbox-message-ids:latest
+    env_file:
+      - .env
+    command: npm run start:nodemon
+    volumes:
+      - type: bind
+        source: /home/bensthoughts/Programming/ZeroInbox/backend/zeroinbox-message-ids-controller/src
+        target: /usr/src/app/src
+    networks:
+      - backend
+
+  zeroinbox-batch-messages-controller:
+    container_name: zeroinbox-batch-messages-controller
+    image: gcr.io/zeroinbox-portfolio-project/zeroinbox-batch-messages:latest
+    env_file: 
+      - .env
+    command: npm run start:nodemon
+    volumes:
+      - type: bind
+        source: /home/bensthoughts/Programming/ZeroInbox/backend/zeroinbox-batch-messages-controller/src
+        target: /usr/src/app/src
+    networks: 
+      - backend
+
+  zeroinbox-actions-controller:
+    container_name: zeroinbox-actions-controller
+    image: gcr.io/zeroinbox-portfolio-project/zeroinbox-actions:latest
+    env_file: 
+      - .env
+    command: npm run start:nodemon
+    volumes:
+      - type: bind
+        source: /home/bensthoughts/Programming/ZeroInbox/backend/zeroinbox-actions-controller/src
+        target: /usr/src/app/src
+    networks: 
+      - backend
+
+networks:
+  backend:
+    name: backend

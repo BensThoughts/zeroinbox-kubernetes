@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zeroinbox-api-config
+  namespace: default
+  labels:
+    app: zeroinbox-api
+data:
+  AUTH_FAILURE_REDIRECT_URL: "https://zeroinbox.app/login"
+  AUTH_SUCCESS_REDIRECT_URL: "https://zeroinbox.app/loading"
+  BASIC_PROFILE_ENDPOINT: "https://www.googleapis.com/oauth2/v2/userinfo"
+  CORS_WHITELIST: "https://zero-inbox-organizer.firebaseapp.com,https://www.zeroinbox.app,https://zeroinbox.app"
+  DEFAULT_PERCENT_LOADED: "10"
+  EXPRESS_HOST: "0.0.0.0"
+  EXPRESS_PORT: "8080"
+  G_OAUTH_ACCESS_TYPE: "offline"
+  G_OAUTH_CLIENT_ID: "29182193626-j65v3b2jt1khitdj3ekprmq2egu9kojo.apps.googleusercontent.com"
+  G_OAUTH_PROMPT: "select_account"
+  G_OAUTH_REDIRECT_URL: "https://api.zeroinbox.app/v1/oauth2callback"
+  GAPI_DELAY_MULTIPLIER: "2"
+  GAPI_INIT_RETRY_DELAY: "500"
+  GAPI_MAX_RETRIES: "3"
+  GMAIL_PROFILE_ENDPOINT: "https://www.googleapis.com/gmail/v1/users/me/profile"
+  LOG_LEVEL: "production_trace"
+  OAUTH_TOKEN_URL: "https://www.googleapis.com/oauth2/v4/token"
+  # SESSION_REDIS_HOST: $(ZEROINBOX_REDIS_SERVICE_HOST)
+  # SESSION_REDIS_PORT: $(ZEROINBOX_REDIS_SERVICE_PORT)

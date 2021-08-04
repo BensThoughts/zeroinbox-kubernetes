@@ -1,0 +1,46 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "zeroinbox-api"
+  namespace: "default"
+  labels:
+    app: "zeroinbox-api"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "zeroinbox-api"
+  template:
+    metadata:
+      labels:
+        app: "zeroinbox-api"
+    spec:
+      containers:
+      - name: "zeroinbox-api-gateway"
+        image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-api-gateway@sha256:10a5b1a600d83bd57cf293255a7c7df47d93397d36f5bbbb5353a0ff6a6c2c54"
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "300m"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+            httpHeaders:
+            - name: health-check
+              value: "true"
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        envFrom:
+        - configMapRef:
+            name: "zeroinbox-api-config"
+        - secretRef:
+            name: "zeroinbox-secrets"
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SESSION_REDIS_HOST
+          value: $(ZEROINBOX_REDIS_SERVICE_HOST)
+        - name: SESSION_REDIS_PORT
+          value: $(ZEROINBOX_REDIS_SERVICE_PORT)

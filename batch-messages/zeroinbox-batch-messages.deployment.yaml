@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zeroinbox-batch-messages
+  # namespace: zeroinbox-api-dev
+  labels:
+    app: zeroinbox-batch-messages
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zeroinbox-batch-messages
+  template:
+    metadata:
+      labels:
+        app: zeroinbox-batch-messages
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: zeroinbox-batch-messages
+          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-batch-messages@sha256:7829456705ed2df996ac56228354023972304442f22d003c2db89db87244b22c"
+          imagePullPolicy: IfNotPresent
+          # resources:
+          #   requests:
+          #     memory: "500Mi"
+          #     cpu: "300m"
+          # livenessProbe:
+          #   httpGet:
+          #     path: /healthz
+          #     port: 9114
+          #     httpHeaders:
+          #     - name: health-check
+          #       value: "true"
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 5
+          envFrom:
+          - configMapRef:
+              name: "zeroinbox-batch-messages-config"
+          env:
+          - name: MONGO_URI
+            valueFrom:
+              secretKeyRef:
+                name: zeroinbox-secrets
+                key: MONGO_URI
+          - name: RABBIT_URL
+            valueFrom:
+              secretKeyRef:
+                name: zeroinbox-secrets
+                key: RABBIT_URL

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zeroinbox-batch-messages-config
+  namespace: default
+  labels:
+    app: zeroinbox-batch-messages
+data:
+  LOG_LEVEL: "production_trace"
+  BATCH_MESSAGES_HEALTH_HOST: "0.0.0.0"
+  BATCH_MESSAGES_HEALTH_PORT: "9114"
+  GMAIL_BATCH_ENDPOINT: "https://www.googleapis.com/batch/gmail/v1"
+  GET_MESSAGES_BATCH_SIZE: "100"
+  DEFAULT_PERCENT_LOADED: "10"

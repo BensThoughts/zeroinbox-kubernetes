@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zeroinbox-redis
+  # namespace: zeroinbox-api-dev
+  labels:
+    app: zeroinbox-redis
+    tier: backend
+    phase: development
+spec:
+  selector:
+    matchLabels:
+      app: zeroinbox-redis
+      tier: backend
+      phase: development
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zeroinbox-redis
+        tier: backend
+        phase: development
+    spec:
+      containers:
+      - image: redis:latest
+        name: redis
+        ports:
+          - containerPort: 6379
+        # resources:
+        #   requests:
+        #     cpu: "100m"
+        #     memory: "50Mi"

@@ -1,0 +1,19 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "zeroinbox-api-ingress"
+  namespace: "default"
+  annotations:
+    # Use pre-shared-cert if you want to bring/roll your own https cert
+    # ingress.gcp.kubernetes.io/pre-shared-cert: "zeroinbox-api"
+    networking.gke.io/managed-certificates: "zeroinbox-api-cert"
+    kubernetes.io/ingress.global-static-ip-name: "zeroinbox-api-global"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: "/*"
+        backend:
+          serviceName: "zeroinbox-api"
+          servicePort: 8080
+    host: "api.zeroinbox.app"

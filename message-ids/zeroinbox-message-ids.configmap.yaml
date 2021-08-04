@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zeroinbox-message-ids-config
+  namespace: default
+  labels:
+    app: zeroinbox-batch-messages
+data:
+  LOG_LEVEL: "production_trace"
+  MESSAGE_IDS_HEALTH_HOST: "0.0.0.0"
+  MESSAGE_IDS_HEALTH_PORT: "9113"
+  GMAIL_MESSAGES_ENDPOINT: "https://www.googleapis.com/gmail/v1/users/me/messages"
+  MESSAGE_IDS_MAX_RESULTS: "500"
+  GMAIL_LABEL_IDS: "INBOX"
+  GAPI_MAX_RETRIES: "3"
+  GAPI_INIT_RETRY_DELAY: "500"
+  GAPI_DELAY_MULTIPLIER: "2"

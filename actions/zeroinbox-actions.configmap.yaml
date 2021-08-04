@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zeroinbox-actions-config
+  namespace: default
+  labels:
+    app: zeroinbox-actions
+data:
+  LOG_LEVEL: "production_trace"
+  ACTIONS_HEALTH_HOST: "0.0.0.0"
+  ACTIONS_HEALTH_PORT: "9112"
+  GMAIL_BATCH_ENDPOINT: "https://www.googleapis.com/batch/gmail/v1"
+  BATCHELOR_BATCH_SIZE: "1"
+  GMAIL_BATCH_MODIFY_ENDPOINT: "https://gmail.googleapis.com/gmail/v1/users/me/messages/batchModify"
+  GMAIL_BATCH_MODIFY_SIZE: "1000"
+  GMAIL_LABEL_ENDPOINT: "https://www.googleapis.com/gmail/v1/users/me/labels"
+  GMAIL_MESSAGE_SEND_ENDPOINT: "https://www.googleapis.com/upload/gmail/v1/users/me/messages/send"
+  GMAIL_FILTER_ENDPOINT: "https://www.googleapis.com/gmail/v1/users/me/settings/filters"
+  GAPI_MAX_RETRIES: "3"
+  GAPI_INIT_RETRY_DELAY: "500"
+  GAPI_DELAY_MULTIPLIER: "2"
