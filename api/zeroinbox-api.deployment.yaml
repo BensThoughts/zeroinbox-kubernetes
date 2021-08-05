@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "zeroinbox-api-gateway"
-        image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-api-gateway@sha256:10a5b1a600d83bd57cf293255a7c7df47d93397d36f5bbbb5353a0ff6a6c2c54"
+        image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-api-gateway@sha256:c98ca00a00ac4bcce9d4b15e807a0eac0dbdcfc7e89ab3778b60498cc4a16165"
         imagePullPolicy: IfNotPresent
         resources:
           requests:

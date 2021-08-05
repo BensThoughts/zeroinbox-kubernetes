@@ -18,7 +18,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: zeroinbox-message-ids
-          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-message-ids@sha256:a2c08e5308532c759f1f35fd915c7935a62fac4e3b0ab125f7f438440eb9ebf8"
+          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-message-ids@sha256:44098838ff8f01f60a266ac6f656cbf7e36add9007b75c3ee5de95891c69623b"
           imagePullPolicy: IfNotPresent
           # resources:
           #   requests:

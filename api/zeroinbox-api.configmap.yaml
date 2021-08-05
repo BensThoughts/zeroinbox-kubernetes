@@ -15,7 +15,7 @@ data:
   EXPRESS_PORT: "8080"
   G_OAUTH_ACCESS_TYPE: "offline"
   G_OAUTH_CLIENT_ID: "29182193626-j65v3b2jt1khitdj3ekprmq2egu9kojo.apps.googleusercontent.com"
-  G_OAUTH_PROMPT: "select_account"
+  G_OAUTH_PROMPT: "consent"
   G_OAUTH_REDIRECT_URL: "https://api.zeroinbox.app/v1/oauth2callback"
   GAPI_DELAY_MULTIPLIER: "2"
   GAPI_INIT_RETRY_DELAY: "500"
