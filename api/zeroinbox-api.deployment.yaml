@@ -5,6 +5,7 @@ metadata:
   namespace: "default"
   labels:
     app: "zeroinbox-api"
+    version: "1.9.2"
 spec:
   replicas: 2
   selector:
@@ -17,7 +18,7 @@ spec:
     spec:
       containers:
       - name: "zeroinbox-api-gateway"
-        image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-api-gateway@sha256:c98ca00a00ac4bcce9d4b15e807a0eac0dbdcfc7e89ab3778b60498cc4a16165"
+        image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-api-gateway@sha256:0510f434752dc43ebfb187a9a6347c35f1b0da6992306996e81398ee1232b703"
         imagePullPolicy: IfNotPresent
         resources:
           requests:

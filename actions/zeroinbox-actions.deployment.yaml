@@ -4,7 +4,8 @@ metadata:
   name: zeroinbox-actions
   # namespace: zeroinbox-api-dev
   labels:
-    app: zeroinbox-actions
+    app: "zeroinbox-actions"
+    version: "0.9.2"
 spec:
   replicas: 1
   selector:
@@ -18,7 +19,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: zeroinbox-message-ids
-          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-actions@sha256:e3364c0684c9a8637b3dc76045f16d98b08128be572bf574317c316ce173df8d"
+          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-actions@sha256:3be7caa5a4683e84bc39a5c4b67711addc3fb23af65330e0c7814f26eccdf434"
           imagePullPolicy: IfNotPresent
           # resources:
           #   requests:

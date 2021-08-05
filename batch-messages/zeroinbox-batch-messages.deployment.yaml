@@ -4,7 +4,8 @@ metadata:
   name: zeroinbox-batch-messages
   # namespace: zeroinbox-api-dev
   labels:
-    app: zeroinbox-batch-messages
+    app: "zeroinbox-batch-messages"
+    version: "0.3.2"
 spec:
   replicas: 1
   selector:
@@ -18,7 +19,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: zeroinbox-batch-messages
-          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-batch-messages@sha256:2cb0cb875b586c389181034760b76d0bfc42936926952c83296320a2f805fcc8"
+          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-batch-messages@sha256:92f4e90130388aff5ebc173f107b82f6f8fbd4bc868fed7d2de509a4043375ef"
           imagePullPolicy: IfNotPresent
           # resources:
           #   requests:
