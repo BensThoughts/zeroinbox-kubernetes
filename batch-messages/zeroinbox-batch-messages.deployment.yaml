@@ -19,21 +19,24 @@ spec:
       restartPolicy: Always
       containers:
         - name: zeroinbox-batch-messages
-          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-batch-messages@sha256:19b9bcd4e4faf7843e46bcddd3227cac4db0c5705c0e8e04516b1a02d4fe0f99"
+          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-batch-messages@sha256:cc8173faa64d25ec87e0079a5076a6aece788c723cd1b668671c90d880c203ac"
           imagePullPolicy: IfNotPresent
-          # resources:
-          #   requests:
-          #     memory: "500Mi"
-          #     cpu: "300m"
-          # livenessProbe:
-          #   httpGet:
-          #     path: /healthz
-          #     port: 9114
-          #     httpHeaders:
-          #     - name: health-check
-          #       value: "true"
-          #   initialDelaySeconds: 10
-          #   periodSeconds: 5
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "100m"
+            limits:
+              memory: "800Mi"
+              cpu: "300m"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 9114
+              httpHeaders:
+              - name: health-check
+                value: "true"
+            initialDelaySeconds: 10
+            periodSeconds: 5
           envFrom:
           - configMapRef:
               name: "zeroinbox-batch-messages-config"

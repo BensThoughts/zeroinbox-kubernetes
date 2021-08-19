@@ -18,12 +18,15 @@ spec:
     spec:
       containers:
       - name: "zeroinbox-api-gateway"
-        image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-api-gateway@sha256:0510f434752dc43ebfb187a9a6347c35f1b0da6992306996e81398ee1232b703"
+        image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-api-gateway@sha256:4e6f0e2cea5b4273d476fb47f812f730942845a77f2c40faa6a222e17ea481e1"
         imagePullPolicy: IfNotPresent
         resources:
           requests:
             memory: "500Mi"
-            cpu: "300m"
+            cpu: "200m"
+          limits:
+            memory: "1000Mi"
+            cpu: "400m"
         livenessProbe:
           httpGet:
             path: /healthz

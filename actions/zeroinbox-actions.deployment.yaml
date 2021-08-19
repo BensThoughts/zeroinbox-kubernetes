@@ -19,21 +19,24 @@ spec:
       restartPolicy: Always
       containers:
         - name: zeroinbox-message-ids
-          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-actions@sha256:3be7caa5a4683e84bc39a5c4b67711addc3fb23af65330e0c7814f26eccdf434"
+          image: "gcr.io/zeroinbox-portfolio-project/zeroinbox-actions@sha256:25654b1f3fedd8c609c50f38d56eeefdca9bbfb07bb78eea671b8a1ba74e89bd"
           imagePullPolicy: IfNotPresent
-          # resources:
-          #   requests:
-          #     memory: "500Mi"
-          #     cpu: "300m"
-          # livenessProbe:
-          #   httpGet:
-          #     path: /healthz
-          #     port: 9112
-          #     httpHeaders:
-          #     - name: health-check
-          #       value: "true"
-          #   initialDelaySeconds: 10
-          #   periodSeconds: 5
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "100m"
+            limits:
+              memory: "500Mi"
+              cpu: "200m"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 9112
+              httpHeaders:
+              - name: health-check
+                value: "true"
+            initialDelaySeconds: 10
+            periodSeconds: 5
           envFrom:
           - configMapRef:
               name: "zeroinbox-actions-config"
